@@ -3,8 +3,9 @@
 
     <string-array name="mydemos_name_array">
         <item >Utils类的使用</item>
+        <item >HandlerThread的demo</item>
         <item >Utils类的使用</item>
-        <item >Utils类的使用</item>
+        <item >jni Demo</item>
     </string-array>
 
 </resources>

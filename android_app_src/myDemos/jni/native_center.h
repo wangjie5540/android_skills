@@ -50,6 +50,7 @@ JNIEXPORT jint JNICALL destroyVideoDecoder(JNIEnv* env, jclass clasz,
 JNIEXPORT jlong JNICALL videoDecoderDecode(JNIEnv* env, jclass clasz,
 							jlong handle, jshortArray inArray, jlong in_size,
 							jshortArray outArray, jlong out_size);
+JNIEXPORT void JNICALL void_call(JNIEnv* env, jobject thiz, jobject object);
 
 #ifdef __cplusplus
 }

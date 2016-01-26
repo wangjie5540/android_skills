@@ -24,6 +24,8 @@
         </activity>
         <activity android:name="com.example.demo_activities.UsageForUtils" >
         </activity>
+        <activity android:name="com.example.jni_demo.NativeTest" >
+        </activity>
     </application>
 
 </manifest>

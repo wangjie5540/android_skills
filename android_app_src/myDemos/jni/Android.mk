@@ -17,13 +17,18 @@ LOCAL_SRC_FILES += video_codec.cpp
 #LOCAL_CFLAGS += -O2 -DNDEBUG
 #=======配置jni层的日志需要的so
 LOCAL_LDLIBS    := -lm -llog
+
+
 #=======配置头文件目录
-LOCAL_C_INCLUDES := sources/foo
+#LOCAL_C_INCLUDES := sources/foo
 
 #=======引用其他目录的Android.mk文件
+
+
+
+
 #include $(call all-subdir-makefiles)
 #include $(CLEAR_VARS)
-
 #=======引用前面定义的静态库
 #LOCAL_STATIC_LIBRARIES := libp2p
 

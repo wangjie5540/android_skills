@@ -3,10 +3,15 @@ package com.example.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo_activities.UsageForUtils;
+import com.example.jni_demo.NativeCenter;
+import com.example.jni_demo.NativeTest;
 import com.example.mydemos.R;
 
 import android.app.Activity;
+import android.app.NativeActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,9 +30,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		allDemos = getResources().getStringArray(R.array.mydemos_name_array);
-		//获取ListView对象
 		ListView listView = new ListView(this);
-		//设置数据、布局、context
 		listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, getData()));
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -35,14 +38,20 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View view, int index,
 					long arg3) {
 				Toast.makeText(mContext, "index is " + index, Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent();
 				switch (index) {
-				case 1:
-					
+				case 0:
+					intent.setClass(MainActivity.this, UsageForUtils.class);
+					break;
+				case 3:
+					intent.setClass(MainActivity.this, NativeTest.class);
 					break;
 
 				default:
+					intent.setClass(MainActivity.this, UsageForUtils.class);
 					break;
 				}
+				startActivity(intent);
 			}
 		});
 		setContentView(listView);

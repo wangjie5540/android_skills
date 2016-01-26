@@ -12,32 +12,33 @@ extern "C" {
 #endif
 
 #ifndef JNIREG_CLASS
-#define JNIREG_CLASS "com/example/jni_demo/CodecCenter"
+#define JNIREG_CLASS "com/example/jni_demo/NativeCenter"
 #endif
 
 #ifndef SUB_CLASS
-#define SUB_CLASS "com/example/jni_demo/CodecCenter$AUDIO_CODEC_TYPE"
+#define SUB_CLASS "com/example/jni_demo/NativeCenter$AUDIO_CODEC_TYPE"
 #endif
 
 static int registerNatives(JNIEnv*);
 static JNINativeMethod gMethods[] = {
-		{"stringFromJNI", "(I)Ljava/lang/String;", (void*) stringFromJNI },
-		{"nativeCreateAudioEncoder","(Lcom/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE;IIII)J",(void*) createAudioEncoder },
-		{"nativeDestroyAudioEncoder", "(J)I", (void*)destroyAudioEncoder},
-		{"nativeAudioEncoderExtradataSize", "(J)J", (void*)audioEncoderExtradataSize},
-		{"nativeAudioEncoderExtradata", "(J[SJ)J", (void*)audioEncoderExtradata},
-		{"nativeAudioEncoderEncode", "(J[SJ[SJ)J", (void*)audioEncoderEncode},
-		{"nativeCreateAudioDecoder", "(Lcom/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE;III)J", (void*)createAudioDecoder},
-		{"nativeDestroyAudioDecoder", "(J)I", (void*)destroyAudioDecoder},
-		{"nativeAudioDecoderDecode", "(J[SJ[SJ)J", (void*)audioDecoderDecode},
-		{"nativeCreateVideoEncoder", "(Lcom/example/hudong_test_jni/CodecCenter$VIDEO_CODEC_TYPE;IIII)J", (void*)createVideoEncoder},
-		{"nativeDestroyVideoEncoder", "(J)I", (void*)destroyVideoEncoder},
-		{"nativeVideoEncoderExtradataSize", "(J)J", (void*)videoEncoderExtradataSize},
-		{"nativeVideoEncoderExtradata", "(J[SJ)J", (void*)videoEncoderExtradata},
-		{"nativeVideoEncoderEncode", "(J[SJ[SJLcom/example/hudong_test_jni/CodecCenter$VIDEO_FRAME_TYPE;)J", (void*)videoEncoderEncode},
-		{"nativeCreateVideoDecoder", "(JII)J", (void*)createVideoDecoder},
-		{"nativeDestroyVideoDecoder", "(J)I", (void*)destroyVideoDecoder},
-		{"nativeVideoDecoderDecode", "(J[SJ[SJ)J", (void*)videoDecoderDecode},
+		{"void_call", "(Lcom/example/jni_demo/NativeTest;)V", (void*) void_call},
+//		{"stringFromJNI", "(I)Ljava/lang/String;", (void*) stringFromJNI },
+//		{"nativeCreateAudioEncoder","(Lcom/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE;IIII)J",(void*) createAudioEncoder },
+//		{"nativeDestroyAudioEncoder", "(J)I", (void*)destroyAudioEncoder},
+//		{"nativeAudioEncoderExtradataSize", "(J)J", (void*)audioEncoderExtradataSize},
+//		{"nativeAudioEncoderExtradata", "(J[SJ)J", (void*)audioEncoderExtradata},
+//		{"nativeAudioEncoderEncode", "(J[SJ[SJ)J", (void*)audioEncoderEncode},
+//		{"nativeCreateAudioDecoder", "(Lcom/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE;III)J", (void*)createAudioDecoder},
+//		{"nativeDestroyAudioDecoder", "(J)I", (void*)destroyAudioDecoder},
+//		{"nativeAudioDecoderDecode", "(J[SJ[SJ)J", (void*)audioDecoderDecode},
+//		{"nativeCreateVideoEncoder", "(Lcom/example/hudong_test_jni/CodecCenter$VIDEO_CODEC_TYPE;IIII)J", (void*)createVideoEncoder},
+//		{"nativeDestroyVideoEncoder", "(J)I", (void*)destroyVideoEncoder},
+//		{"nativeVideoEncoderExtradataSize", "(J)J", (void*)videoEncoderExtradataSize},
+//		{"nativeVideoEncoderExtradata", "(J[SJ)J", (void*)videoEncoderExtradata},
+//		{"nativeVideoEncoderEncode", "(J[SJ[SJLcom/example/hudong_test_jni/CodecCenter$VIDEO_FRAME_TYPE;)J", (void*)videoEncoderEncode},
+//		{"nativeCreateVideoDecoder", "(JII)J", (void*)createVideoDecoder},
+//		{"nativeDestroyVideoDecoder", "(J)I", (void*)destroyVideoDecoder},
+//		{"nativeVideoDecoderDecode", "(J[SJ[SJ)J", (void*)videoDecoderDecode},
 };
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
@@ -284,6 +285,13 @@ JNIEXPORT jlong JNICALL videoDecoderDecode(JNIEnv* env, jclass clasz,
 	jshort* in = env->GetShortArrayElements(inArray, NULL);
 	jshort* out = env->GetShortArrayElements(outArray, NULL);
 	return video_decoder_decode(handle, (unsigned char*)in, in_size, (unsigned char*)out, out_size);
+}
+
+jobject tmp;
+JNIEXPORT void JNICALL void_call(JNIEnv* env, jobject thiz, jobject object)
+{
+	tmp = (env->NewGlobalRef(object));
+	LOGD("void_call %p %p", object, tmp);
 }
 
 #ifdef __cplusplus

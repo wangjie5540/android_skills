@@ -10,7 +10,7 @@
 #define NATIVE_COMMON_HEADER_H_
 
 #include <android/log.h>
-#define LOG_TAG "native_codec_center"
+#define LOG_TAG "native_center"
 #define LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 
 
