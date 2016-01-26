@@ -13,5 +13,5 @@ APP_SHORT_COMMANDS := true
 #APP_CPP_FEATURES += exceptions rtti
 #APP_CPPFLAGS += -fexceptions  
 
-#这里可以控制版本是否是release
+#这里可以控制版本是否是release(不知道是不是和Android.mk的冲突)
 # APP_OPTIM := release OR debug  

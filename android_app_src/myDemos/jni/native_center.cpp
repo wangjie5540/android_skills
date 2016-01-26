@@ -1,5 +1,5 @@
 #include <jni.h>
-#include "native_codec_center.h"
+#include "native_center.h"
 #include <cstddef>
 #include "assert.h"
 #include "stdio.h"
@@ -12,16 +12,16 @@ extern "C" {
 #endif
 
 #ifndef JNIREG_CLASS
-#define JNIREG_CLASS "com/example/hudong_test_jni/CodecCenter"
+#define JNIREG_CLASS "com/example/jni_demo/CodecCenter"
 #endif
 
 #ifndef SUB_CLASS
-#define SUB_CLASS "com/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE"
+#define SUB_CLASS "com/example/jni_demo/CodecCenter$AUDIO_CODEC_TYPE"
 #endif
 
 static int registerNatives(JNIEnv*);
 static JNINativeMethod gMethods[] = {
-		{ "stringFromJNI", "(I)Ljava/lang/String;", (void*) stringFromJNI },
+		{"stringFromJNI", "(I)Ljava/lang/String;", (void*) stringFromJNI },
 		{"nativeCreateAudioEncoder","(Lcom/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE;IIII)J",(void*) createAudioEncoder },
 		{"nativeDestroyAudioEncoder", "(J)I", (void*)destroyAudioEncoder},
 		{"nativeAudioEncoderExtradataSize", "(J)J", (void*)audioEncoderExtradataSize},

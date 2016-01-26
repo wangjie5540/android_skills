@@ -5,8 +5,8 @@
  *      Author: wang
  */
 
-#ifndef NATIVE_CODEC_CENTER_H
-#define NATIVE_CODEC_CENTER_H
+#ifndef NATIVE_CENTER_H
+#define NATIVE_CENTER_H
 
 #ifdef __cplusplus
 extern "C" {
