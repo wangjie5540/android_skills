@@ -11,8 +11,8 @@ public class NativeTest extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.jni_demo);
-		Log.d("wangjie", "" + this);
-		NativeCenter.getInstance().void_call(this);
-		NativeCenter.getInstance().void_call(this);
+		Log.d("wangjie", "" + this.toString());
+		Log.d("wangjie", "" + NativeCenter.getInstance().void_call(this));
+		Log.d("wangjie", "" + NativeCenter.getInstance().void_call(this));
 	}
 }

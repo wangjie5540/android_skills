@@ -21,7 +21,7 @@ extern "C" {
 
 static int registerNatives(JNIEnv*);
 static JNINativeMethod gMethods[] = {
-		{"void_call", "(Lcom/example/jni_demo/NativeTest;)V", (void*) void_call},
+		{"void_call", "(Lcom/example/jni_demo/NativeTest;)I", (void*) void_call},
 //		{"stringFromJNI", "(I)Ljava/lang/String;", (void*) stringFromJNI },
 //		{"nativeCreateAudioEncoder","(Lcom/example/hudong_test_jni/CodecCenter$AUDIO_CODEC_TYPE;IIII)J",(void*) createAudioEncoder },
 //		{"nativeDestroyAudioEncoder", "(J)I", (void*)destroyAudioEncoder},
@@ -287,11 +287,15 @@ JNIEXPORT jlong JNICALL videoDecoderDecode(JNIEnv* env, jclass clasz,
 	return video_decoder_decode(handle, (unsigned char*)in, in_size, (unsigned char*)out, out_size);
 }
 
-jobject tmp;
-JNIEXPORT void JNICALL void_call(JNIEnv* env, jobject thiz, jobject object)
+//jobject tmp;
+JNIEXPORT jint JNICALL void_call(JNIEnv* env, jobject thiz, jobject object)
 {
-	tmp = (env->NewGlobalRef(object));
-	LOGD("void_call %p %p", object, tmp);
+//	tmp = (env->NewGlobalRef(object));
+	LOGD("void_call %p", object);
+//	env->DeleteLocalRef(object);
+	int aa;
+	int *a = &aa;
+	return (int)a;
 }
 
 #ifdef __cplusplus

@@ -23,5 +23,5 @@ public class NativeCenter {
 		return mNativeCenter;
 	}
 	
-	public native void void_call(NativeTest n);
+	public native int void_call(NativeTest n);
 }
