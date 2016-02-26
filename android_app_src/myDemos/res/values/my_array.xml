@@ -5,11 +5,13 @@
         <item>Utils类的使用</item>
         <item>HandlerThread的demo</item>
         <item>jni Demo</item>
+        <item>AlertDialog的demo</item>
     </string-array>
     
     <string-array name="mydemos_class_array">
         <item>com.example.demo_activities.UsageForUtils</item>
         <item>com.example.demo_activities.UsageForUtils</item>
         <item>com.example.jni_demo.NativeTest</item>
+        <item>com.example.demo_activities.AlertDialogDemo</item>
     </string-array>
 </resources>
