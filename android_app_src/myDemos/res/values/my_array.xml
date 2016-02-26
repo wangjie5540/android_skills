@@ -2,10 +2,14 @@
 <resources>
 
     <string-array name="mydemos_name_array">
-        <item >Utils类的使用</item>
-        <item >HandlerThread的demo</item>
-        <item >Utils类的使用</item>
-        <item >jni Demo</item>
+        <item>Utils类的使用</item>
+        <item>HandlerThread的demo</item>
+        <item>jni Demo</item>
     </string-array>
-
+    
+    <string-array name="mydemos_class_array">
+        <item>com.example.demo_activities.UsageForUtils</item>
+        <item>com.example.demo_activities.UsageForUtils</item>
+        <item>com.example.jni_demo.NativeTest</item>
+    </string-array>
 </resources>

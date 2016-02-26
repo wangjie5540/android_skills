@@ -12,19 +12,21 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
             android:name="com.example.main.MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity android:name="com.example.demo_activities.UsageForUtils" >
+        </activity>
+        <activity android:name="com.example.jni_demo.NativeTest" >
+        </activity>
+        <activity android:name="com.example.demo_activities.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="com.example.demo_activities.UsageForUtils" >
-        </activity>
-        <activity android:name="com.example.jni_demo.NativeTest" >
         </activity>
     </application>
 

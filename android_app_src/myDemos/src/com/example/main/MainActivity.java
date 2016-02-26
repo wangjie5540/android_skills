@@ -23,15 +23,20 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private Context mContext = null;
-	private String[] allDemos = null; 
+	private String[] allDemosArray = null; 
+	private String[] allClassArray = null;
+	private ArrayList<String> mListName = new ArrayList<String>();
+	private ArrayList<String> mListClass = new ArrayList<String>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = this;
-		allDemos = getResources().getStringArray(R.array.mydemos_name_array);
+		allDemosArray = getResources().getStringArray(R.array.mydemos_name_array);
+		allClassArray = getResources().getStringArray(R.array.mydemos_class_array);
 		ListView listView = new ListView(this);
-		listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, getData()));
+		getData();
+		listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, mListName));
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -39,30 +44,28 @@ public class MainActivity extends Activity {
 					long arg3) {
 				Toast.makeText(mContext, "index is " + index, Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent();
-				switch (index) {
-				case 0:
-					intent.setClass(MainActivity.this, UsageForUtils.class);
-					break;
-				case 3:
-					intent.setClass(MainActivity.this, NativeTest.class);
-					break;
-
-				default:
-					intent.setClass(MainActivity.this, UsageForUtils.class);
-					break;
+				Class<?> targetClass = null;
+				try {
+					targetClass = Class.forName(mListClass.get(index));
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
 				}
+				intent.setClass(MainActivity.this, targetClass);
 				startActivity(intent);
+				overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
 			}
 		});
 		setContentView(listView);
 	}
 	
-	private List<String> getData(){
-		List<String> list = new ArrayList<String>();
-		for (String s : allDemos){
-			list.add(s);
+	private void getData(){
+		mListName.clear();
+		mListClass.clear();
+		for (String s : allDemosArray){
+			mListName.add(s);
 		}
-		
-		return list;
+		for (String c : allClassArray){
+			mListClass.add(c);
+		}
 	}
 }
